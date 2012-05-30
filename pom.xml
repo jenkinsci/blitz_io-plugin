@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -19,6 +20,14 @@
     <name>blitz.io-jenkins</name>
     <url>http://blitz.io</url>
     <description>Jenkins plugin for blitz.io</description>
+
+    <developers>
+        <developer>
+            <id>jeffli</id>
+            <name>Jeff Li</name>
+            <email>jeff.li@spirent.com</email>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
@@ -75,9 +84,9 @@
         </pluginRepository>
     </pluginRepositories>
 
-  <scm>
-    <connection>scm:svn:https://svn.jenkins-ci.org/tags/blitz.io-jenkins-1.0</connection>
-    <developerConnection>scm:svn:https://svn.jenkins-ci.org/tags/blitz.io-jenkins-1.0</developerConnection>
-    <url>https://svn.jenkins-ci.org/tags/blitz.io-jenkins-1.0</url>
-  </scm>
+    <scm>
+        <connection>scm:git:ssh://github.com/jeffli/blitz_io-jenkins-plugin.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/jeffli/blitz_io-jenkins-plugin.git</developerConnection>
+        <url>https://github.com/jeffli/blitz_io-jenkins-plugin</url>
+    </scm>
 </project>
