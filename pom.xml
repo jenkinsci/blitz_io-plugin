@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>1.424</version><!-- which version of Jenkins is this plugin built against? -->
+    </parent>
+
+    <groupId>io.blitz</groupId>
+    <artifactId>blitz.io-jenkins</artifactId>
+    <version>1.0</version>
+    <packaging>hpi</packaging>
+
+    <organization>
+        <name>Spirent Communications</name>
+        <url>http://www.spirent.com/</url>
+    </organization>
+
+    <name>blitz.io-jenkins</name>
+    <url>http://blitz.io</url>
+    <description>Jenkins plugin for blitz.io</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.blitz</groupId>
+            <artifactId>blitz-api-client</artifactId>
+            <version>0.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.8.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.5</version>
+        </dependency>
+    </dependencies>
+
+    <licenses>
+        <license>
+            <name>The MIT Licence (MIT)</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+  <!-- get every artifact through repo.jenkins-ci.org, which proxies all the artifacts that we need -->
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+  <scm>
+    <connection>scm:svn:https://svn.jenkins-ci.org/tags/blitz.io-jenkins-1.0</connection>
+    <developerConnection>scm:svn:https://svn.jenkins-ci.org/tags/blitz.io-jenkins-1.0</developerConnection>
+    <url>https://svn.jenkins-ci.org/tags/blitz.io-jenkins-1.0</url>
+  </scm>
+</project>

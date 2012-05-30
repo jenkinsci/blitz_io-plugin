@@ -1,0 +1,143 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
+         xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
+         xmlns:html="jelly:html" >
+
+<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/jquery-min.js" />
+<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/jquery.flot.js" />
+<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/jquery.flot.crosshair.js" />
+<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/underscore-1.1.4.js" />
+<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/play.js" />
+
+<l:layout css="/plugin/blitz.io-jenkins/css/blitz.css" >
+    <st:include it="${it.owner}" page="sidepanel.jelly" />
+
+    <l:main-panel>
+        <h1>Blitz Test Report</h1>
+        <br/>
+
+        <j:if test="${it.sprintResult != null}">
+            <h2>Sprint Test</h2>
+
+            <table class="report">
+                <thead>
+                    <tr>
+                        <td class='heading'>Command</td>
+                        <td class='heading'>Region</td>
+                        <td class='heading'>Connection Time (ms)</td>
+                        <td class='heading'>Response Time (ms)</td>
+                        <td class='heading'>Threshold (ms)</td>
+                        <td class='heading'>Status</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="lines_total"><b>${it.sprint}</b></td>
+                        <td class="lines_total">${it.sprintResult.region}</td>
+                        <td class="lines_total">${it.sprintConnectionTime}</td>
+                        <td class="lines_total">${it.sprintResponseTime}</td>
+                        <td class="lines_code">${it.responseTime}</td>
+                        <td class="lines_code">
+                            <j:if test="${it.sprintTestFailed}">
+                                <span class="red"><b>Failed</b></span>
+                            </j:if>
+                            <j:if test="${!it.sprintTestFailed}">
+                                <span>Passed</span>
+                            </j:if>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <div class="section">
+                <j:forEach items="${it.sprintResult.steps}" begin="${it.sprintResult.steps.size()-1}"
+                    var="step">
+                    <h2>${step.request.line}</h2>
+                    <table>
+                    <tr>
+                        <td><strong>Duration:</strong></td>
+                        <td>${it.sprintResponseTime} ms</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Connect:</strong></td>
+                        <td>${it.sprintConnectionTime} ms</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Response:</strong></td>
+                        <td> ${step.response.line}</td>
+                    </tr>
+                    </table>
+                    <br/>
+                    <div><strong>Request headers</strong></div>
+                    <ul>
+                        <li><strong>Host:</strong> ${step.request.headers.Host}</li>
+                        <li><strong>X-User-IP:</strong> ${step.request.headers["X-User-IP"]}</li>
+                        <li><strong>X-User-ID:</strong> ${step.request.headers["X-User-ID"]}</li>
+                        <li><strong>User-Agent:</strong> ${step.request.headers["User-Agent"]}</li>
+                    </ul>
+                    <br/>
+                    <div><strong>Response headers</strong></div>
+                    <ul>
+                        <li><strong>Content-Type:</strong> ${step.response.headers["Content-Type"]}</li>
+                        <li><strong>Content-Length:</strong> ${step.response.headers["Content-Length"]}</li>
+                        <li><strong>Connection:</strong> ${step.response.headers.Connection}</li>
+                    </ul>
+                </j:forEach>
+            </div>
+            <br/> <br/>
+        </j:if>
+
+        <j:if test="${it.rushResult != null}">
+            <h2>Rush Test</h2>
+
+             <table class="report">
+            <thead>
+                <tr>
+                    <td class='heading'>Command</td>
+                    <td class='heading'>Region</td>
+                    <td class='heading'>Error Rate (%)</td>
+                    <td class='heading'>Threshold (%)</td>
+                    <td class='heading'>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="lines_total"><b>${it.rush}</b></td>
+                    <td class="lines_total">${it.rushResult.region}</td>
+                    <td class="lines_total">${it.rushErrorRateFormatted}%</td>
+                    <td class="lines_code">${it.errorRate}%</td>
+                    <td class="lines_code">
+                        <j:if test="${it.rushTestFailed}">
+                            <span class="red"><b>Failed</b></span>
+                        </j:if>
+                        <j:if test="${!it.rushTestFailed}">
+                            <span>Passed</span>
+                        </j:if>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            <br/><br/>
+
+            <div>
+                <div id="rush-results"></div>
+                <script type="text/javascript">
+                    var t = '${it.rushResultJson}';
+                    var p = '${it.rushPattern}';
+                    blitz.curl.test(t, p).render(jQuery('#rush-results'));
+                </script>
+            </div>
+
+            <br/><br/>
+        </j:if>
+
+        <j:if test="${it.testException != null}">
+            <h2>Test Failed with Exception</h2>
+            <div class="rush-error">
+                <strong>${it.testException.fillInStackTrace()}</strong>
+            </div>
+        </j:if>
+
+    </l:main-panel>
+</l:layout>
+</j:jelly>

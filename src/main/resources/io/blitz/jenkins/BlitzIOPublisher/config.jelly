@@ -1,0 +1,30 @@
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <f:block>
+
+        <f:entry title="Sprint" field="runSprint" description="Run a sprint test">
+            <f:checkbox checked="${descriptor.getRunSprint()}" />
+        </f:entry>
+
+        <f:entry title="Command" field="sprint">
+            <f:textbox default="${descriptor.getSprint()}" />
+        </f:entry>
+        <f:entry title="Response Time (ms)" field="responseTime">
+            <f:textbox default="${descriptor.getResponseTime()}" />
+        </f:entry>
+
+        <f:entry></f:entry>
+
+        <f:entry title="Rush" field="runRush" description="Run a rush test">
+            <f:checkbox checked="${descriptor.getRunRush()}" />
+        </f:entry>
+
+        <f:entry title="Command" field="rush">
+            <f:textbox default="${descriptor.getRush()}" />
+        </f:entry>
+        <f:entry title="Error Rate (%)" field="errorRate">
+            <f:textbox default="${descriptor.getErrorRate()}" />
+        </f:entry>
+
+    </f:block>
+</j:jelly>

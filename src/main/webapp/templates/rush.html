@@ -1,0 +1,85 @@
+<% if (test.last_point) { %>
+<div>
+    <div class="title">Summary</div>
+    <%
+    var hits = blitz.pp.percent(test.last_point.hits*100/test.last_point.total);
+    var errs = blitz.pp.percent(test.last_point.errors*100/test.last_point.total);
+    var tuts = blitz.pp.percent(test.last_point.timeouts*100/test.last_point.total);
+    var hitsp = hits !== '0' ? hits + '%' : '';
+    var errsp = errs !== '0' ? errs + '%' : '';
+    var tutsp = tuts !== '0' ? tuts + '%' : '';
+    %>
+    <img style="float:right" src="http://chart.apis.google.com/chart?chf=bg,s,FFFFFF&chs=340x100&cht=p3&chco=006400|DD1122|E66C25&chd=t:<%=hits%>,<%=errs%>,<%=tuts%>&chdl=Hits|Errors|Timeouts&chl=<%=hitsp%>|<%=errsp%>|<%=tutsp%>"/>
+    <p>
+        This
+        <span class="keyword"> rush</span>
+        generated
+        <span class="hits"> <%= blitz.pp.number(test.last_point.hits) %> </span>
+        successful hits in
+        <span class="blue"> <%= blitz.pp.duration(test.max_duration) %></span>
+        and we transferred
+        <span class="blue"> <%= blitz.pp.bytes(test.last_point.rxBytes+test.last_point.txBytes) %></span>
+        of data in and out of your app.
+
+        The average hit rate of
+        <span class="blue"> <%= blitz.pp.rate(test.average_hit_rate) %></span>
+        translates to about
+        <span class="blue"> <%= blitz.pp.number(Math.floor(test.average_hit_rate*3600*24)) %></span>
+        hits/day.
+
+        <% if (test.average_response_time > 0.5) { %>
+        <p>
+            The average response time of
+            <span class="timeouts"> <%= blitz.pp.duration(test.average_response_time) %></span>
+            is considerably higher than most other sites that are built
+            to scale out. Response times less than
+            <span class="blue"> 250 ms</span>
+            are what the cool kids strive for.
+    	</p>
+        <% } %>
+    </p>
+    <% if (test.last_point.timeouts || test.last_point.errors) { %>
+    <p>
+        You got bigger problems though:
+        <span class="errors"> <%= ((test.last_point.timeouts+test.last_point.errors)/test.last_point.total*100).toFixed(2) %>%</span>
+        of the users during this
+        <span class="keyword"> rush</span>
+        experienced timeouts or errors!
+    </p>
+    <% } %>
+</div>
+<div>
+    <% if (test.first_error_point) { %>
+    <h3> Errors</h3>
+    <p>
+        The first error happened at
+        <span class="errors"> <%= blitz.pp.duration(test.first_error_point.timestamp) %> </span>
+        into the test when the number of concurrent users was at
+        <span class="blue"><%= test.first_error_point.volume %></span>.
+        Errors are usually caused by resource exhaustion issues, like running
+        out of file descriptors or the connection pool size being too small
+        (for SQL databases).
+    </p>
+    <% } %>
+</div>
+<div>
+    <% if (test.first_timeout_point) { %>
+    <h3> Timeouts</h3>
+    <p>
+        The first timeout happened at
+        <span class="timeouts"> <%= blitz.pp.duration(test.first_timeout_point.timestamp) %></span>
+        into the test when the number of concurrent users was at
+        <span class="blue"><%= test.first_timeout_point.volume %></span>.
+        Looks like you've been rushing with a timeout of
+        <span class="blue"><%= blitz.pp.duration((test.timeout||1000)/1000.0) %></span>.
+        Timeouts tend to increase with concurrency if you have lock contention
+        of sorts. You might want to think about in-memory caching using
+        <a href="http://redis.io/" class="extern">redis</a>,
+        <a href="http://memcached.org/" class="extern">memcached</a> or
+        <a href="http://www.varnish-cache.org/" class="extern">varnish</a>
+        to return stale data for a period of time and asynchronously refresh
+        this data.
+    </p>
+    <% } %>
+</div>
+<% } %>
