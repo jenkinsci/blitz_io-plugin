@@ -18,7 +18,7 @@
     </organization>
 
     <name>blitz.io-jenkins</name>
-    <url>http://blitz.io</url>
+    <url>https://github.com/jeffli/blitz_io-jenkins-plugin/wiki</url>
     <description>Jenkins plugin for blitz.io</description>
 
     <developers>
@@ -85,8 +85,8 @@
     </pluginRepositories>
 
     <scm>
-        <connection>scm:git:git://github.com/jeffli/blitz_io-jenkins-plugin.git</connection>
-        <developerConnection>scm:git:https://git@github.com/jeffli/blitz_io-jenkins-plugin.git</developerConnection>
-        <url>https://github.com/jeffli/blitz_io-jenkins-plugin</url>
+        <connection>scm:git:ssh://github.com/jenkinsci/blitz_io-plugin.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/blitz_io-plugin.git</developerConnection>
+        <url>https://github.com/jenkinsci/blitz_io-plugin.git</url>
     </scm>
 </project>
