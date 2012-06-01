@@ -19,8 +19,7 @@
 
     <name>Blitz.io Plugin</name>
     <url>https://github.com/jeffli/blitz_io-jenkins-plugin/wiki</url>
-    <description>This plugin allows you to run web load tests from the cloud
-        using <a href="http://blitz.io">Blitz.io</a>.</description>
+    <description>This plugin allows you to run web load tests from the cloud using <a href="http://blitz.io">Blitz.io</a>.</description>
 
     <developers>
         <developer>
