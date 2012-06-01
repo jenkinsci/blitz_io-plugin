@@ -58,7 +58,7 @@ blitz.pp = {
 };
 
 blitz.curl = (function () {
-    function _plot($root, test, pattern) {
+    function _plot($root, test, pattern, contextPath) {
         var html = [];
         html.push('<div>');
 
@@ -281,7 +281,7 @@ blitz.curl = (function () {
             test.series.timeouts.data.length = 0;
             //console.info(test);
             jQuery.ajax({
-                url: '/plugin/blitz.io-jenkins/templates/rush.html',
+                url: contextPath+'/plugin/blitz.io-jenkins/templates/rush.html',
                 dataType: 'text',
                 success: function (data) {
                     test.template = _.template(data);
@@ -369,12 +369,13 @@ blitz.curl = (function () {
 }());
 
 blitz.curl.test = (function () {
-    return function (t, p) {
+    return function (t, p, contextPath) {
         var test = jQuery.parseJSON(t) || { steps: [] },
             pattern = jQuery.parseJSON(p) || { iterations: 1, intervals: [] };
+        contextPath = contextPath || '';
         return {
             render: function($root) {
-                blitz.curl.plot($root, test, pattern);
+                blitz.curl.plot($root, test, pattern, contextPath);
             }
         };
     };

@@ -182,7 +182,6 @@ public class BlitzIOPublisher extends Recorder {
         } catch (Exception e) {
             ex = e;
             System.out.println(e.fillInStackTrace());
-            build.setResult(Result.FAILURE);
         }
 
         BlitzBuildAction action = new BlitzBuildAction(build, sprintLisener.getSprintResult(),
@@ -190,10 +189,11 @@ public class BlitzIOPublisher extends Recorder {
                 ex);
         build.getActions().add(action);
 
-        if(ex == null){
+        if(ex == null && !action.isSprintTestFailed() && !action.isRushTestFailed()){
             build.setResult(Result.SUCCESS);
             return true;
         }else{
+            build.setResult(Result.FAILURE);
             return false;
         }
     }

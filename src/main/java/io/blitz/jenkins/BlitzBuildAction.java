@@ -180,8 +180,12 @@ public class BlitzBuildAction implements HealthReportingAction{
         return connect;
     }
 
+    /*
+     * if the sprint test has failed
+     */
     public boolean isSprintTestFailed(){
-        return getSprintResponseTime()>getResponseTime();
+        return getSprint()!=null && getSprint().length()>0
+               && getSprintResponseTime()>getResponseTime();
     }
 
     public double getRushErrorRate(){
@@ -213,7 +217,11 @@ public class BlitzBuildAction implements HealthReportingAction{
         return "0";
     }
 
+    /*
+     * if the rush test has failed
+     */
     public boolean isRushTestFailed(){
-        return getRushErrorRate()>getErrorRate();
+        return getRush()!=null && getRush().length()>0
+               && getRushErrorRate()>getErrorRate();
     }
 }

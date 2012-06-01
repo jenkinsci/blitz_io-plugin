@@ -2,11 +2,11 @@
          xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
          xmlns:html="jelly:html" >
 
-<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/jquery-min.js" />
-<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/jquery.flot.js" />
-<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/jquery.flot.crosshair.js" />
-<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/libs/underscore-1.1.4.js" />
-<script src="${rootURL}/plugin/blitz.io-jenkins/scripts/play.js" />
+<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/jquery-min.js" />
+<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/jquery.flot.js" />
+<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/jquery.flot.crosshair.js" />
+<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/underscore-1.1.4.js" />
+<script src="../../../../plugin/blitz.io-jenkins/scripts/play.js" />
 
 <l:layout css="/plugin/blitz.io-jenkins/css/blitz.css" >
     <st:include it="${it.owner}" page="sidepanel.jelly" />
@@ -122,9 +122,10 @@
             <div>
                 <div id="rush-results"></div>
                 <script type="text/javascript">
-                    var t = '${it.rushResultJson}';
-                    var p = '${it.rushPattern}';
-                    blitz.curl.test(t, p).render(jQuery('#rush-results'));
+                    var result = '${it.rushResultJson}';
+                    var pattern = '${it.rushPattern}';
+                    var contextPath = '${rootURL}';
+                    blitz.curl.test(result, pattern, contextPath).render(jQuery('#rush-results'));
                 </script>
             </div>
 
