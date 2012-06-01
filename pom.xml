@@ -9,7 +9,7 @@
 
     <groupId>io.blitz</groupId>
     <artifactId>blitz.io-jenkins</artifactId>
-    <version>1.03-SNAPSHOT</version>
+    <version>1.02-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <organization>
@@ -17,9 +17,10 @@
         <url>http://www.spirent.com/</url>
     </organization>
 
-    <name>blitz.io-jenkins</name>
+    <name>Blitz.io Plugin</name>
     <url>https://github.com/jeffli/blitz_io-jenkins-plugin/wiki</url>
-    <description>Jenkins plugin for blitz.io</description>
+    <description>This plugin allows you to run web load tests from the cloud
+        using <a href="http://blitz.io">Blitz.io</a>.</description>
 
     <developers>
         <developer>
