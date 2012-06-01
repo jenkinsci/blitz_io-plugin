@@ -9,7 +9,7 @@
 
     <groupId>io.blitz</groupId>
     <artifactId>blitz.io-jenkins</artifactId>
-    <version>1.02-SNAPSHOT</version>
+    <version>1.02</version>
     <packaging>hpi</packaging>
 
     <organization>
