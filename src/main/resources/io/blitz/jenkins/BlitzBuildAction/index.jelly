@@ -2,13 +2,13 @@
          xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form"
          xmlns:html="jelly:html" >
 
-<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/jquery-min.js" />
-<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/jquery.flot.js" />
-<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/jquery.flot.crosshair.js" />
-<script src="../../../../plugin/blitz.io-jenkins/scripts/libs/underscore-1.1.4.js" />
-<script src="../../../../plugin/blitz.io-jenkins/scripts/play.js" />
+<script src="../../../../plugin/blitz_io-jenkins/scripts/libs/jquery-min.js" />
+<script src="../../../../plugin/blitz_io-jenkins/scripts/libs/jquery.flot.js" />
+<script src="../../../../plugin/blitz_io-jenkins/scripts/libs/jquery.flot.crosshair.js" />
+<script src="../../../../plugin/blitz_io-jenkins/scripts/libs/underscore-1.1.4.js" />
+<script src="../../../../plugin/blitz_io-jenkins/scripts/play.js" />
 
-<l:layout css="/plugin/blitz.io-jenkins/css/blitz.css" >
+<l:layout css="/plugin/blitz_io-jenkins/css/blitz.css" >
     <st:include it="${it.owner}" page="sidepanel.jelly" />
 
     <l:main-panel>

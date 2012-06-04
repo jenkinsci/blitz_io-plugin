@@ -8,8 +8,8 @@
     </parent>
 
     <groupId>io.blitz</groupId>
-    <artifactId>blitz.io-jenkins</artifactId>
-    <version>1.02-SNAPSHOT</version>
+    <artifactId>blitz_io-jenkins</artifactId>
+    <version>1.03-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <organization>
@@ -19,7 +19,7 @@
 
     <name>Blitz.io Plugin</name>
     <url>https://github.com/jeffli/blitz_io-jenkins-plugin/wiki</url>
-    <description>This plugin allows you to run web load tests from the cloud using http://blitz.io .</description>
+    <description>This plugin allows you to run web load tests from the cloud using &lt;a href='http://blitz.io'&gt;Blitz.io&lt;/a&gt; .</description>
 
     <developers>
         <developer>

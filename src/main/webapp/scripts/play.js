@@ -281,7 +281,7 @@ blitz.curl = (function () {
             test.series.timeouts.data.length = 0;
             //console.info(test);
             jQuery.ajax({
-                url: contextPath+'/plugin/blitz.io-jenkins/templates/rush.html',
+                url: contextPath+'/plugin/blitz_io-jenkins/templates/rush.html',
                 dataType: 'text',
                 success: function (data) {
                     test.template = _.template(data);

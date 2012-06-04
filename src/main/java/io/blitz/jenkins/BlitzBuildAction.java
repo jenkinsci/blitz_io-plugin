@@ -91,7 +91,7 @@ public class BlitzBuildAction implements HealthReportingAction{
     }
 
     public String getIconFileName() {
-        return "/plugin/blitz.io-jenkins/images/16x16/blitz.png";
+        return "/plugin/blitz_io-jenkins/images/16x16/blitz.png";
     }
 
 
