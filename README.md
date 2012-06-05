@@ -1,4 +1,5 @@
 blitz_io-jenkins-plugin
 =======================
 
-This is a Jenkins plugin for using the blitz.io performance testing.
+This plugin allows you to run web load tests from the cloud
+  using <a href='http://blitz.io'>Blitz.io</a> .
